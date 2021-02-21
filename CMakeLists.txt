@@ -38,6 +38,12 @@ add_executable(${PRJ_NAME}
     src/MainForm.cpp
     include/Utilities.hpp)
 
+if(MSVC)
+    target_compile_options(${PRJ_NAME} PRIVATE /W4 /WX)
+else()
+    target_compile_options(${PRJ_NAME} PRIVATE -Wall -Wextra -pedantic -Werror)
+endif()
+
 target_include_directories(${PRJ_NAME} PRIVATE ${Qt${QT_MAJOR_VERSION}_INCLUDE_DIRS})
 target_include_directories(${PRJ_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/include)
 
