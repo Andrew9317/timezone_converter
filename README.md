@@ -11,7 +11,7 @@ Coordinate frames supported:
     ECI         (TODO)
     ENU         (TODO)
     NED         (TODO)
-    LUF         (TODO)
+    AER         (TODO)
     
 You are also able to edit the timezones (Add & Remove) in the database through the settings.
 
