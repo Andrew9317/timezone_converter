@@ -6,11 +6,11 @@ This tool provides a nice interface to convert between time-zones and coordinate
 
 Coordinate frames supported:
     
-    Geographic  (TODO)
-    ECEF        (TODO)
-    ECI         (TODO)
-    NED         (TODO)
-    AER         (TODO)
+    Geographic
+    ECEF
+    ECI
+    NED
+    AER
     
 You are also able to edit the timezones (Add & Remove) in the database through the settings.
 
@@ -27,7 +27,6 @@ Below are some mock-ups contained in the docs directory:
 </p>
 
 ### Coordinate Frame Tab
-
 <p float="left">
   <img src="https://github.com/Andrew9317/tzcf_converter/blob/main/docs/Coordinate_Conversions_Dark.svg" width="350" height="550" />
   <img src="https://github.com/Andrew9317/tzcf_converter/blob/main/docs/Coordinate_Conversions_Light.svg" width="350" height="550" />
