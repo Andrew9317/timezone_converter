@@ -21,7 +21,6 @@ You are also able to edit the timezones (Add & Remove) in the database through t
 Below are some mock-ups contained in the docs directory:
 
 ### Time Tab
-
 <p float="left">
   <img src="https://github.com/Andrew9317/tzcf_converter/blob/main/docs/Time_Tab_Dark.svg" width="350" height="550" />
   <img src="https://github.com/Andrew9317/tzcf_converter/blob/main/docs/Time_Tab_Light.svg" width="350" height="550" />
