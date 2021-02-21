@@ -1,12 +1,12 @@
 #include <QApplication>
-#include <QMainWindow>
+#include "MainForm.hpp"
 
 int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
 
-    QMainWindow test;
-    test.show();
+    MainForm window;
+    window.show();
 
     app.exec();
 }

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 
 #Project name
-set(PRJ_NAME timezone_converter)
+set(PRJ_NAME tzcf_converter)
 
 #You can change this to Qt5 if you
 #are not ready to migrate to Qt6.
@@ -33,7 +33,10 @@ endif()
 find_package(Qt${QT_MAJOR_VERSION} COMPONENTS Widgets REQUIRED PATHS $ENV{Qt${QT_MAJOR_VERSION}_HOME})
 
 add_executable(${PRJ_NAME}
-    src/main.cpp)
+    src/main.cpp
+    include/MainForm.hpp
+    src/MainForm.cpp
+    include/Utilities.hpp)
 
 target_include_directories(${PRJ_NAME} PRIVATE ${Qt${QT_MAJOR_VERSION}_INCLUDE_DIRS})
 target_include_directories(${PRJ_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/include)
