@@ -9,7 +9,6 @@ Coordinate frames supported:
     Geographic  (TODO)
     ECEF        (TODO)
     ECI         (TODO)
-    ENU         (TODO)
     NED         (TODO)
     AER         (TODO)
     
