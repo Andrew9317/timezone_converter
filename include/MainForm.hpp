@@ -1,16 +1,21 @@
-#include <QMainWindow>
+#ifndef MAINFORM_HPP
+#define MAINFORM_HPP
 
-class MainForm : public QMainWindow
+#include "RoundedDialog.hpp"
+
+class MainForm : public RoundedDialog
 {
     Q_OBJECT
 
     QWidget* createTimeFrameToggleWidget();
-    
-public:
-    MainForm(QWidget* parent = nullptr);
+
+  public:
+    explicit MainForm(QWidget* parent = nullptr);
     ~MainForm() = default;
 
-signals:
+  signals:
     void sigTimeSelected();
     void sigFrameSelected();
 };
+
+#endif

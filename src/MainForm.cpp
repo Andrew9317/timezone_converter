@@ -2,15 +2,14 @@
 #include "Utilities.hpp"
 
 #include <QFrame>
-#include <QPushButton>
 #include <QHBoxLayout>
+#include <QPushButton>
 
 #include <iostream>
 
 MainForm::MainForm(QWidget* parent)
-:QMainWindow(parent)
+    : RoundedDialog(parent)
 {
-    QWidget* centralWidget = new QWidget(this);
     QVBoxLayout* centralLayout = new QVBoxLayout();
 
     QHBoxLayout* timeFrameToggleLayout = new QHBoxLayout();
@@ -20,8 +19,7 @@ MainForm::MainForm(QWidget* parent)
 
     centralLayout->addLayout(timeFrameToggleLayout);
 
-    centralWidget->setLayout(centralLayout);
-    this->setCentralWidget(centralWidget);
+    this->setLayout(centralLayout);
 }
 
 QWidget* MainForm::createTimeFrameToggleWidget()
@@ -38,8 +36,10 @@ QWidget* MainForm::createTimeFrameToggleWidget()
     background->setFixedHeight(24);
 
     QPushButton* buttonTime = new QPushButton("Time", background);
-    buttonTime->setStyleSheet("QPushButton {color: white; background-color: " + baseHexColor + "; font-size: " + fontSize + "px;} \
-                               QPushButton:pressed {background-color: " + baseHexColor + "; border-style: outset;}");
+    buttonTime->setStyleSheet("QPushButton {color: white; background-color: " + baseHexColor + "; font-size: " + fontSize +
+                              "px; border-style: outset;} \
+                               QPushButton:pressed {background-color: " +
+                              baseHexColor + "; border-style: outset;}");
     buttonTime->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     buttonTime->setFixedHeight(17);
     buttonTime->setFlat(true);
@@ -50,16 +50,18 @@ QWidget* MainForm::createTimeFrameToggleWidget()
     seperator->setFixedHeight(24);
 
     QPushButton* buttonFrames = new QPushButton("Frame", background);
-    buttonFrames->setStyleSheet("QPushButton {color: " + secondaryHexColor + "; background-color: " + baseHexColor + "; font-size: " + fontSize + "px;} \
-                                 QPushButton:pressed {background-color: " + baseHexColor + "; border-style: outset;}");
+    buttonFrames->setStyleSheet("QPushButton {color: " + secondaryHexColor + "; background-color: " + baseHexColor + "; font-size: " + fontSize +
+                                "px; border-style: outset;} \
+                                 QPushButton:pressed {background-color: " +
+                                baseHexColor + "; border-style: outset;}");
     buttonFrames->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     buttonFrames->setFixedHeight(17);
     buttonFrames->setFlat(true);
 
-    //Lambda to update the button stylesheets depending on which on is selected/clicked.
-    auto updateButtonColors = [buttonTime, buttonFrames, secondaryHexColor](bool isTimeSelected){
+    // Lambda to update the button stylesheets depending on which on is selected/clicked.
+    auto updateButtonColors = [buttonTime, buttonFrames, secondaryHexColor](bool isTimeSelected) {
         QString tag = "color: ";
-        
+
         QString timeColor = isTimeSelected ? "white" : secondaryHexColor;
         QString frameColor = isTimeSelected ? secondaryHexColor : "white";
 
@@ -72,19 +74,19 @@ QWidget* MainForm::createTimeFrameToggleWidget()
         buttonFrames->setStyleSheet(styleSheetFrames);
     };
 
-    //Lambda that gets called on button presses. Update the button stylesheets then emit
-    //the signal for subscribers to be notified of the selection.
-    QObject::connect(buttonTime, &QPushButton::clicked, this, [this, updateButtonColors]{
+    // Lambda that gets called on button presses. Update the button stylesheets then emit
+    // the signal for subscribers to be notified of the selection.
+    QObject::connect(buttonTime, &QPushButton::clicked, this, [this, updateButtonColors] {
         updateButtonColors(true);
         emit sigTimeSelected();
     });
-    QObject::connect(buttonFrames, &QPushButton::clicked, this, [this, updateButtonColors]{
+    QObject::connect(buttonFrames, &QPushButton::clicked, this, [this, updateButtonColors] {
         updateButtonColors(false);
         emit sigFrameSelected();
     });
 
-    //Content Margins must be zero or else there is too much padding and the words
-    //start to get cut off.
+    // Content Margins must be zero or else there is too much padding and the words
+    // start to get cut off.
     QHBoxLayout* backgroundLayout = new QHBoxLayout();
     backgroundLayout->setContentsMargins(0, 0, 0, 0);
 

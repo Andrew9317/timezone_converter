@@ -34,9 +34,11 @@ find_package(Qt${QT_MAJOR_VERSION} COMPONENTS Widgets REQUIRED PATHS $ENV{Qt${QT
 
 add_executable(${TARGET_NAME}
     src/main.cpp
+    include/Utilities.hpp
     include/MainForm.hpp
     src/MainForm.cpp
-    include/Utilities.hpp)
+    include/RoundedDialog.hpp
+    src/RoundedDialog.cpp)
 
 if(MSVC)
     target_compile_options(${TARGET_NAME} PRIVATE /W4 /WX)
