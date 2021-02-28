@@ -8,6 +8,7 @@ class MainForm : public RoundedDialog
     Q_OBJECT
 
     QWidget* createTimeFrameToggleWidget();
+    QWidget* createExitWidget();
 
   public:
     explicit MainForm(QWidget* parent = nullptr);
