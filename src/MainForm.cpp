@@ -4,6 +4,7 @@
 #include <QFrame>
 #include <QHBoxLayout>
 #include <QPushButton>
+#include <QSizeGrip>
 
 #include <iostream>
 
@@ -13,11 +14,22 @@ MainForm::MainForm(QWidget* parent)
     QVBoxLayout* centralLayout = new QVBoxLayout();
 
     QHBoxLayout* timeFrameToggleLayout = new QHBoxLayout();
+
+    // Need these spacer items to center the Time Frame widget
     timeFrameToggleLayout->addSpacerItem(new QSpacerItem(1, 1, QSizePolicy::Expanding, QSizePolicy::Fixed));
     timeFrameToggleLayout->addWidget(this->createTimeFrameToggleWidget());
     timeFrameToggleLayout->addSpacerItem(new QSpacerItem(1, 1, QSizePolicy::Expanding, QSizePolicy::Fixed));
 
+    QSizeGrip* sizeGrip = new QSizeGrip(this);
+    sizeGrip->setFixedSize(10, 10);
+
+    // Need to add this spacer item so we get a decent buffer between the top of the main window
+    // and the time toggle.
+    centralLayout->addSpacerItem(new QSpacerItem(1, 20, QSizePolicy::Fixed, QSizePolicy::Fixed));
     centralLayout->addLayout(timeFrameToggleLayout);
+    centralLayout->addSpacerItem(new QSpacerItem(1, 20, QSizePolicy::Fixed, QSizePolicy::Fixed));
+
+    centralLayout->addWidget(sizeGrip, 0, Qt::AlignBottom | Qt::AlignRight);
 
     this->setLayout(centralLayout);
 }
